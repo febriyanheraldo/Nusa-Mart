@@ -1,0 +1,182 @@
+/* ==========================================================================
+   FLASH SALE PAGE STYLES
+   ========================================================================== */
+
+/* Hero Banner Flash Sale */
+.flash-hero-banner {
+  margin-top: 24px;
+  background: linear-gradient(135deg, #7C2D12 0%, #EA580C 50%, #F97316 100%);
+  border-radius: 20px;
+  padding: 44px 64px;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.flash-badge-title {
+  background-color: #FEF08A;
+  color: #854D0E;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.flash-countdown-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.countdown-timer-large {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-block {
+  background-color: #0F172A;
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-width: 52px;
+}
+
+.time-block strong {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.time-block small {
+  font-size: 9px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* Schedule Bar / Jadwal Flash Sale */
+.flash-schedule-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.schedule-item {
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.schedule-item.active {
+  background-color: #FFF7ED;
+  border-color: #F97316;
+}
+
+.schedule-item .time {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.schedule-item.active .time {
+  color: #EA580C;
+}
+
+.schedule-item .status {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.schedule-item.active .status {
+  color: #EA580C;
+}
+
+/* Indicator Progress Bar Stok Terjual */
+.stock-progress-container {
+  margin-top: 8px;
+  background-color: #FFEDD5;
+  border-radius: 20px;
+  height: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stock-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #EA580C, #F97316);
+  border-radius: 20px;
+}
+
+.stock-text {
+  position: relative;
+  z-index: 2;
+  font-size: 10px;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 992px) {
+  .flash-hero-banner {
+    padding: 32px 24px;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .flash-countdown-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flash-schedule-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .schedule-item {
+    padding: 10px 6px;
+  }
+  .schedule-item .time {
+    font-size: 13px;
+  }
+  .schedule-item .status {
+    font-size: 10px;
+  }
+  .time-block {
+    min-width: 44px;
+    padding: 6px 8px;
+  }
+  .time-block strong {
+    font-size: 15px;
+  }
+}
