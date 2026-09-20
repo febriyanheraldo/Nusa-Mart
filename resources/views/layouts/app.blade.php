@@ -43,8 +43,10 @@
                 </div>
 
                 @auth
-                    <div style="font-size: 13px; font-weight: 700;">
-                        <a href="{{ route('dashboard') }}"><i class="fa-regular fa-user"></i> {{ auth()->user()->name }}</a>
+                    <div class="auth-buttons">
+                        <a href="{{ route('profil') }}" class="btn-profile-nav">
+                            <i class="fa-regular fa-user"></i> {{ auth()->user()->name }}
+                        </a>
                     </div>
                 @else
                     <div class="auth-buttons">
