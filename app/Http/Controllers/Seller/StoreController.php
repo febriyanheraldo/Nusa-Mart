@@ -3,36 +3,62 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
-use App\Models\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class StoreController extends Controller
 {
-    public function create()
+    /**
+     * Tampilkan Pengaturan Profil Toko menggunakan SQL Query Builder
+     */
+    public function edit()
     {
-        if (auth()->user()->store) {
-            return redirect()->route('seller.dashboard');
+        $userId = auth()->id();
+
+        // SQL Query Builder: Mengambil data toko berdasarkan user_id
+        $store = DB::table('stores')
+            ->where('user_id', $userId)
+            ->first();
+
+        if (!$store) {
+            abort(404, 'Toko Anda belum terdaftar.');
         }
 
-        return view('seller.store.create');
+        return view('seller.toko-edit', compact('store'));
     }
 
-    public function store(Request $request)
+    /**
+     * Update Profil Toko menggunakan SQL Query Builder
+     */
+    public function update(Request $request)
     {
+        $userId = auth()->id();
+
+        // Ambil ID toko
+        $store = DB::table('stores')->where('user_id', $userId)->first();
+
+        if (!$store) {
+            abort(404);
+        }
+
         $request->validate([
-            'name' => 'required|string|max:255|unique:stores,name',
-            'description' => 'nullable|string|max:1000',
+            'name'        => 'required|string|max:255',
+            'description' => 'nullable|string',
         ]);
 
-        Store::create([
-            'user_id' => auth()->id(),
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'description' => $request->description,
-            'status' => 'active',
-        ]);
+        $slug = Str::slug($request->name) . '-' . Str::random(4);
 
-        return redirect()->route('seller.dashboard')->with('success', 'Selamat! Toko Anda berhasil dibuat.');
+        // SQL Query Builder: Update record tabel 'stores'
+        DB::table('stores')
+            ->where('id', $store->id)
+            ->update([
+                'name'        => $request->name,
+                'slug'        => $slug,
+                'description' => $request->description,
+                'updated_at'  => now(), // Wajib diisi manual pada Query Builder
+            ]);
+
+        return redirect()->back()->with('success', 'Profil toko berhasil diperbarui!');
     }
 }

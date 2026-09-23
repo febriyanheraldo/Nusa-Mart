@@ -186,7 +186,7 @@ main.seller-main {
 }
 
 /* ==========================================
-   KPI CARDS STYLING (MODERN & TERPERBAIKI)
+   KPI CARDS STYLING (MODERN)
    ========================================== */
 .kpi-grid {
   display: grid;
@@ -435,101 +435,101 @@ td {
 
 /* Form Creation Styles */
 .form-container {
-    background-color: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    border-radius: 16px;
-    padding: 32px;
-    max-width: 800px;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 800px;
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
 .form-group.full-width {
-    grid-column: span 2;
+  grid-column: span 2;
 }
 
 .form-group label {
-    font-size: 13px;
-    font-weight: 700;
-    color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-    padding: 10px 14px;
-    border: 1.5px solid #CBD5E1;
-    border-radius: 8px;
-    font-size: 14px;
-    color: #0F172A;
-    outline: none;
-    transition: border-color 0.2s ease;
-    background-color: #FFFFFF;
+  padding: 10px 14px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0F172A;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background-color: #FFFFFF;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #10B981;
+  border-color: #10B981;
 }
 
 .error-message {
-    font-size: 11px;
-    color: #E11D48;
-    font-weight: 600;
+  font-size: 11px;
+  color: #E11D48;
+  font-weight: 600;
 }
 
 .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 24px;
-    border-top: 1px solid #F1F5F9;
-    padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 20px;
 }
 
 .btn-cancel {
-    padding: 10px 20px;
-    background-color: #F1F5F9;
-    color: #475569;
-    border: 1px solid #CBD5E1;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s;
+  padding: 10px 20px;
+  background-color: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
 .btn-cancel:hover {
-    background-color: #E2E8F0;
-    color: #0F172A;
+  background-color: #E2E8F0;
+  color: #0F172A;
 }
 
 .btn-submit {
-    padding: 10px 24px;
-    background-color: #10B981;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  padding: 10px 24px;
+  background-color: #10B981;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .btn-submit:hover {
-    background-color: #059669;
+  background-color: #059669;
 }
 
 /* Wallet & Mutation Specific Styles */
@@ -631,7 +631,85 @@ td {
   background-color: #059669;
 }
 
-/* Responsive Rules */
+/* ==========================================
+   CUSTOM PAGINATION STYLING (TERPERBAIKI)
+   ========================================== */
+.table-container nav[role="navigation"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #E2E8F0;
+  font-size: 14px;
+  color: #64748B;
+}
+
+/* Sembunyikan Tombol Teks Kecil/Ganda di Pojok Kiri Bawaan Laravel */
+.table-container nav[role="navigation"] > div:first-child {
+  display: none !important;
+}
+
+/* Kontainer Utama Info & Angka Paginasi */
+.table-container nav[role="navigation"] > div:last-child {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Ukuran Ikon Panah SVG */
+.table-container nav[role="navigation"] svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Styling Kotak Tombol Angka & Navigasi */
+.table-container nav[role="navigation"] a,
+.table-container nav[role="navigation"] span[aria-current="page"],
+.table-container nav[role="navigation"] span[aria-disabled="true"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid #CBD5E1;
+  background-color: #FFFFFF;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Hover State */
+.table-container nav[role="navigation"] a:hover {
+  background-color: #ECFDF5;
+  border-color: #10B981;
+  color: #10B981;
+}
+
+/* Status Halaman Aktif (Tombol Hijau) */
+.table-container nav[role="navigation"] span[aria-current="page"] {
+  background-color: #10B981 !important;
+  color: #FFFFFF !important;
+  border-color: #10B981 !important;
+}
+
+/* Status Tombol Nonaktif (Disabled) */
+.table-container nav[role="navigation"] span[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: #F8FAFC;
+}
+
+/* ==========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================== */
 @media (max-width: 1200px) {
   .dashboard-cards { grid-template-columns: 1fr 1fr; }
   .wallet-card { grid-column: span 2; }
@@ -672,10 +750,6 @@ td {
   .table-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   .search-product, .search-reviews { width: 100%; }
   .input-resi, .input-reply { width: 120px; }
-  .form-grid {
-        grid-template-columns: 1fr;
-    }
-    .form-group.full-width {
-        grid-column: span 1;
-    }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full-width { grid-column: span 1; }
 }

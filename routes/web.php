@@ -68,6 +68,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/store/create', [StoreController::class, 'create'])->name('store.create');
         Route::post('/store', [StoreController::class, 'store'])->name('store.store');
 
+        Route::get('/toko/edit', [StoreController::class, 'edit'])->name('toko.edit');
+        Route::put('/toko/update', [StoreController::class, 'update'])->name('toko.update');
+
         // 2. Dashboard Seller (Pengecekan toko dilakukan langsung di dalam rute)
         Route::get('/dashboard', function () {
             if (!auth()->user()->store) {

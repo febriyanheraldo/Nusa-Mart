@@ -17,23 +17,26 @@
         <div>
             <div class="brand">DASHBOARD<span> SELLER</span></div>
 
-            <!-- Profil Toko/Seller -->
-            <div class="store-badge">
+            <!-- Profil Toko/Seller (Bisa diklik menuju Edit Toko) -->
+            <a href="{{ route('seller.toko.edit') }}" class="store-badge" style="text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#E2E8F0';" onmouseout="this.style.backgroundColor='#F1F5F9';">
                 <div class="store-avatar">
                     {{ strtoupper(substr(auth()->user()->store->name ?? auth()->user()->name ?? 'S', 0, 1)) }}
                 </div>
                 <div class="store-info">
-                    <h4>{{ auth()->user()->store->name ?? 'Toko Saya' }}</h4>
+                    <h4>{{ auth()->user()->store->name ?? 'Toko Saya' }} <i class="fa-solid fa-pen-to-square" style="font-size: 10px; color: #10B981; margin-left: 4px;"></i></h4>
                     <p>Official Merchant</p>
                 </div>
-            </div>
+            </a>
 
             <ul class="nav-menu">
                 <li class="nav-item {{ request()->routeIs('seller.dashboard') ? 'active' : '' }}">
                     <a href="{{ route('seller.dashboard') }}">📦 Pesanan Masuk</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('seller.produk') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('seller.produk*') ? 'active' : '' }}">
                     <a href="{{ route('seller.produk') }}">🛍️ Katalog Produk</a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('seller.toko*') ? 'active' : '' }}">
+                    <a href="{{ route('seller.toko.edit') }}">⚙️ Pengaturan Toko</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('seller.dompet') ? 'active' : '' }}">
                     <a href="{{ route('seller.dompet') }}">💰 Dompet Toko</a>

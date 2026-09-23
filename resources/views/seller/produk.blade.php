@@ -86,9 +86,11 @@
                             <div class="product-cell">
                                 <div class="product-img">
                                     @if($product->image)
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover;">
                                     @else
-                                        📦
+                                        <span style="font-weight: 700; color: #10B981; font-size: 16px;">
+                                            {{ strtoupper(substr($product->name, 0, 1)) }}
+                                        </span>
                                     @endif
                                 </div>
                                 <div class="product-info">
@@ -130,7 +132,7 @@
                 @empty
                     <tr>
                         <td colspan="6" style="text-align: center; color: #64748B; padding: 32px 16px;">
-                            <div style="font-size: 32px; margin-bottom: 8px;">📦</div>
+                            <div style="font-size: 32px; margin-bottom: 8px;">🛍️</div>
                             <p style="font-weight: 600; font-size: 14px;">Belum Ada Produk di Toko Anda</p>
                             <p style="font-size: 12px; opacity: 0.8; margin-top: 4px;">Klik tombol "Tambah Produk Baru" di kanan atas untuk mulai mengunggah dagangan.</p>
                         </td>
@@ -138,5 +140,7 @@
                 @endforelse
             </tbody>
         </table>
+
+        {{ $products->links() }}
     </div>
 @endsection
