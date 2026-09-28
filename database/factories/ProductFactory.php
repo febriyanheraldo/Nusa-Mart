@@ -36,8 +36,8 @@ class ProductFactory extends Factory
             'name'        => $finalName,
             'sku'         => 'SKU-' . strtoupper(Str::random(8)),
             'category'    => $product['category'],
-            'price'       => $product['price'] + fake()->numberBetween(-20000, 50000), // Sedikit variasi harga
-            'stock'       => fake()->numberBetween(0, 45), // Kombinasi stok ada dan habis
+            'price'       => $product['price'] + fake()->numberBetween(-20000, 50000),
+            'stock'       => fake()->numberBetween(0, 45),
             'description' => 'Produk berkualitas tinggi dari toko terpercaya dengan garansi resmi.',
             'image'       => null,
             'status'      => 'active',

@@ -35,14 +35,14 @@
                 <li class="nav-item {{ request()->routeIs('seller.produk*') ? 'active' : '' }}">
                     <a href="{{ route('seller.produk') }}">🛍️ Katalog Produk</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('seller.toko*') ? 'active' : '' }}">
-                    <a href="{{ route('seller.toko.edit') }}">⚙️ Pengaturan Toko</a>
-                </li>
                 <li class="nav-item {{ request()->routeIs('seller.dompet') ? 'active' : '' }}">
                     <a href="{{ route('seller.dompet') }}">💰 Dompet Toko</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('seller.ulasan') ? 'active' : '' }}">
                     <a href="{{ route('seller.ulasan') }}">⭐ Ulasan Pembeli</a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('seller.toko*') ? 'active' : '' }}">
+                    <a href="{{ route('seller.toko.edit') }}">⚙️ Pengaturan Toko</a>
                 </li>
             </ul>
         </div>

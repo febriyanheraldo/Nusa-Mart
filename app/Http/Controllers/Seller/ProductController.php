@@ -13,23 +13,23 @@ class ProductController extends Controller
     {
         $store = auth()->user()->store;
 
-        // 1. Ambil seluruh koleksi produk toko
+        // Ambil seluruh koleksi produk toko
         $allProducts = $store->products;
 
-        // 2. Hitung Total Produk
+        // Hitung Total Produk
         $activeCount = $allProducts->count();
 
-        // 3. Hitung Stok Menipis (stok antara 1 sampai 4) menggunakan filter closure
+        // Hitung Stok Menipis (stok antara 1 sampai 4) menggunakan filter closure
         $lowStockCount = $allProducts->filter(function ($product) {
             return $product->stock > 0 && $product->stock < 5;
         })->count();
 
-        // 4. Hitung Stok Habis (stok <= 0)
+        // Hitung Stok Habis (stok <= 0)
         $outOfStockCount = $allProducts->filter(function ($product) {
             return $product->stock <= 0;
         })->count();
 
-        // 5. Data produk dengan paginasi untuk tabel
+        // Data produk dengan paginasi untuk tabel
         $products = $store->products()->latest()->paginate(5);
 
         return view('seller.produk', compact(
