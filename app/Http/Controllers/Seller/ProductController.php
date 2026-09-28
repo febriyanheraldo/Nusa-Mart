@@ -37,7 +37,7 @@ class ProductController extends Controller
             'activeCount',
             'lowStockCount',
             'outOfStockCount'
-        ));
+        )); 
     }
 
 //menampilkan form untuk menambahkan produk baru

@@ -26,6 +26,7 @@
             <p>Lengkapi data di bawah ini untuk mendaftar</p>
         </div>
 
+        //untuk mengarahkan ke halaman register
         <form action="{{ route('register') }}" method="POST" class="auth-form">
             @csrf
 
