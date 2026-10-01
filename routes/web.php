@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Seller\StoreController;
 use App\Http\Controllers\Seller\ProductController as SellerProductController;
+use App\Models\Product;
 
 // ==========================================
 // 1. PUBLIC / FRONTEND ROUTES
@@ -16,6 +17,9 @@ Route::get('/flash-sale', function () { return view('flash-sale'); })->name('fla
 Route::get('/gratis-ongkir', function () { return view('gratis-ongkir'); })->name('gratis-ongkir');
 Route::get('/lacak-pesanan', function () { return view('lacak-pesanan'); })->name('lacak-pesanan');
 Route::get('/kategori', function () { return view('kategori'); })->name('kategori');
+Route::get('/test-eloquent', function () {
+    dd(Product::with('store')->get());
+});
 
 // ==========================================
 // 2. GUEST ROUTES (LOGIN & REGISTER)
@@ -83,6 +87,7 @@ Route::middleware('auth')->group(function () {
         // 3. CRUD Katalog Produk Seller
         Route::get('/produk', [SellerProductController::class, 'index'])->name('produk');
         Route::get('/produk/create', [SellerProductController::class, 'create'])->name('produk.create');
+        Route::get('/produk/{product}', [SellerProductController::class, 'show'])->name('produk.show');
         Route::post('/produk', [SellerProductController::class, 'store'])->name('produk.store');
         Route::get('/produk/{product}/edit', [SellerProductController::class, 'edit'])->name('produk.edit');
         Route::put('/produk/{product}', [SellerProductController::class, 'update'])->name('produk.update');

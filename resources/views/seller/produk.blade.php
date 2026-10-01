@@ -66,8 +66,26 @@
     <div class="table-container">
         <div class="table-header">
             <h3>Daftar Produk Toko</h3>
-            <input type="text" class="search-product" placeholder="Cari nama produk / SKU...">
+
+            <!-- Form Pencarian (method GET agar kata kunci muncul di URL) -->
+            <form action="{{ route('seller.produk') }}" method="GET" class="search-form">
+                <input type="text" name="search" class="search-product"
+                       value="{{ $search ?? '' }}"
+                       placeholder="Cari nama produk / SKU / kategori...">
+                <button type="submit" class="btn-search">Cari</button>
+                @if(!empty($search))
+                    <a href="{{ route('seller.produk') }}" class="btn-search-reset">Reset</a>
+                @endif
+            </form>
         </div>
+
+        @if(!empty($search))
+            <p class="search-info">
+                Hasil pencarian untuk "<strong>{{ $search }}</strong>":
+                {{ $products->total() }} produk ditemukan.
+            </p>
+        @endif
+
         <table>
             <thead>
                 <tr>
@@ -94,7 +112,9 @@
                                     @endif
                                 </div>
                                 <div class="product-info">
-                                    <h5>{{ $product->name }}</h5>
+                                    <h5>
+                                        <a href="{{ route('seller.produk.show', $product->id) }}" class="product-link">{{ $product->name }}</a>
+                                    </h5>
                                     <p>SKU: {{ $product->sku }}</p>
                                 </div>
                             </div>
@@ -117,6 +137,8 @@
                         </td>
                         <td>
                             <div class="action-group">
+                                <a href="{{ route('seller.produk.show', $product->id) }}" class="btn-action-detail">Detail</a>
+
                                 <a href="{{ route('seller.produk.edit', $product->id) }}" class="btn-action-edit">
                                     {{ $product->stock == 0 ? 'Restok' : 'Edit' }}
                                 </a>
@@ -132,9 +154,15 @@
                 @empty
                     <tr>
                         <td colspan="6" style="text-align: center; color: #64748B; padding: 32px 16px;">
-                            <div style="font-size: 32px; margin-bottom: 8px;">🛍️</div>
-                            <p style="font-weight: 600; font-size: 14px;">Belum Ada Produk di Toko Anda</p>
-                            <p style="font-size: 12px; opacity: 0.8; margin-top: 4px;">Klik tombol "Tambah Produk Baru" di kanan atas untuk mulai mengunggah dagangan.</p>
+                            @if(!empty($search))
+                                <div style="font-size: 32px; margin-bottom: 8px;">🔍</div>
+                                <p style="font-weight: 600; font-size: 14px;">Produk "{{ $search }}" tidak ditemukan</p>
+                                <p style="font-size: 12px; opacity: 0.8; margin-top: 4px;">Coba kata kunci lain atau klik tombol Reset untuk menampilkan semua produk.</p>
+                            @else
+                                <div style="font-size: 32px; margin-bottom: 8px;">🛍️</div>
+                                <p style="font-weight: 600; font-size: 14px;">Belum Ada Produk di Toko Anda</p>
+                                <p style="font-size: 12px; opacity: 0.8; margin-top: 4px;">Klik tombol "Tambah Produk Baru" di kanan atas untuk mulai mengunggah dagangan.</p>
+                            @endif
                         </td>
                     </tr>
                 @endforelse
